@@ -4,6 +4,7 @@ help h:
 
 setup:
 	@echo "\e[34m=========================== Setup ===========================\e[0m"
+	@pip install --upgrade pip
 	@pip install .
 
 scrap:
