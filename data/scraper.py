@@ -209,7 +209,7 @@ def scrap(driver: Chrome, category_name: str, category_url: str) -> None:
 
             services = driver.find_elements(by=selector, value=".grid-items a.lh-lg")
 
-        category_dir = os.path.join("khamsat", "categories")
+        category_dir = os.path.join("raw", "categories")
 
         os.makedirs(category_dir, exist_ok=True)
 
@@ -242,8 +242,8 @@ for category_name, category_url in categories_meta.items():
 
 chrome.quit()
 
-files = [file for file in os.listdir("khamsat/categories") if file.endswith(".csv")]
+files = [file for file in os.listdir("raw/categories") if file.endswith(".csv")]
 
-khamsat = pd.concat([pd.read_csv(os.path.join("khamsat/categories", file)) for file in files], ignore_index=True)
+raw = pd.concat([pd.read_csv(os.path.join("raw/categories", file)) for file in files], ignore_index=True)
 
-khamsat.to_csv(path_or_buf="khamsat.csv", index=False)
+raw.to_csv(path_or_buf="raw.csv", index=False)
