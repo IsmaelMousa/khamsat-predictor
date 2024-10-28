@@ -1,34 +1,44 @@
 import os
 import time
+
+import pandas as pd
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, TimeoutException
-import pandas as pd
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import (StaleElementReferenceException,
+                                        NoSuchElementException,
+                                        TimeoutException)
 
-def scrap(driver, category_name, category_url):
+
+def scrap(driver: Chrome, category_name: str, category_url: str) -> None:
+    """
+    Scrape all the available offers of the different services for a given category,
+    and saving the scraped data in a csv file that named according to the category name.
+
+    :param driver: The webdriver instance (Google Chrome)
+    :param category_name: The name of the category to scrap
+    :param category_url: The URL of the category to scrap
+    :return: Printed message that tell us we are done
+    """
+    selector = By.CSS_SELECTOR
     data = []
     visited_services = set()
-    max_offers = 2
 
     try:
-        driver.get(category_url)
-        wait = WebDriverWait(driver, timeout=10)
+        driver.get(url=category_url)
 
-        print(f"Category Name: {category_name}")
-        print(f"Category URL: {category_url}")
+        wait = WebDriverWait(driver=driver, timeout=10)
 
-        services = driver.find_elements(by=By.CSS_SELECTOR, value=".grid-items a.lh-lg")
+        services = driver.find_elements(by=selector, value=".grid-items a.lh-lg")
 
         service_collected = 0
+
         while service_collected < len(services):
             service = services[service_collected]
-            service_name = service.text.strip()
-            service_url = service.get_attribute("href")
 
-            print(f"Service Name: {service_name}")
-            print(f"Service URL: {service_url}")
+            service_name = service.text.strip()
+            service_url = service.get_attribute(name="href")
 
             if service_name in visited_services:
                 service_collected += 1
@@ -36,34 +46,34 @@ def scrap(driver, category_name, category_url):
 
             visited_services.add(service_name)
 
-            driver.get(service_url)
+            driver.get(url=service_url)
 
-            offers_collected = 0
             offers_set = set()
 
-            while offers_collected < max_offers:
+            while True:
                 try:
-                    offers = driver.find_elements(by=By.CSS_SELECTOR, value=".product-title a")
+                    offers = driver.find_elements(by=selector, value=".product-title a")
+
+                    new_offers_found = False
 
                     for offer in offers:
-                        offer_url = offer.get_attribute("href")
+                        offer_url = offer.get_attribute(name="href")
 
                         if offer_url in offers_set:
                             continue
 
                         offers_set.add(offer_url)
 
+                        new_offers_found = True
+
                         offer_name = offer.text.strip()
 
-                        print(f"Offer Name: {offer_name}")
-                        print(f"Offer URL: {offer_url}")
-
-                        driver.get(offer_url)
+                        driver.get(url=offer_url)
 
                         try:
-                            offer_rating_elements = wait.until(
-                                EC.presence_of_element_located((By.CSS_SELECTOR, "ul.c-list--rating"))
-                            ).find_elements(by=By.CSS_SELECTOR, value="li.c-list__item i")
+                            offer_rating_elements = wait.until(ec.presence_of_element_located(
+                                (selector, "ul.c-list--rating"))).find_elements(by=selector, value="li.c-list__item i")
+
                             offer_stars = 0.0
 
                             for star in offer_rating_elements:
@@ -71,53 +81,58 @@ def scrap(driver, category_name, category_url):
 
                                 if "fa-star-half-o" in star_class:
                                     offer_stars += 0.5
+
                                 elif "fa-star" in star_class and "fa-star-o" not in star_class:
                                     offer_stars += 1
 
-                        except (NoSuchElementException, TimeoutException):
-                            offer_stars = None
+                            offer_raters = driver.find_element(by=selector,
+                                                               value=".c-list__item.info").text.strip("()")
 
-                        offer_raters = driver.find_element(by=By.CSS_SELECTOR, value=".c-list__item.info").text.strip("()")
-                        offer_response_time_elements = driver.find_elements(by=By.CSS_SELECTOR, value=".card-body .col-6 span")
-                        offer_response_time = offer_response_time_elements[2].text.strip()
-                        offer_buyers = offer_response_time_elements[4].text.strip()
-                        pending = offer_response_time_elements[6].text.strip()
-                        price = offer_response_time_elements[8].text.strip()
-                        duration = offer_response_time_elements[10].text.strip()
+                            offer_response_time_elements = driver.find_elements(by=selector,
+                                                                                value=".card-body .col-6 span")
 
-                        print(f"Offer Stars: {offer_stars}")
-                        print(f"Offer Raters: {offer_raters}")
-                        print(f"Offer Response Time: {offer_response_time}")
-                        print(f"Offer Buyers: {offer_buyers}")
-                        print(f"Pending: {pending}")
-                        print(f"Price: {price}")
-                        print(f"Duration: {duration}")
+                            offer_response_time = offer_response_time_elements[2].text.strip()
+
+                            offer_buyers = offer_response_time_elements[4].text.strip()
+
+                            pending = offer_response_time_elements[6].text.strip()
+
+                            price = offer_response_time_elements[8].text.strip()
+
+                            duration = offer_response_time_elements[10].text.strip()
+
+                        except (NoSuchElementException, TimeoutException, IndexError):
+                            driver.back()
+                            continue
 
                         try:
-                            reviews = len(driver.find_element(by=By.ID, value="reviews-section").find_elements(by=By.CSS_SELECTOR, value=".review_section"))
+                            reviews = len(driver.find_element(by=By.ID, value="reviews-section")
+                                          .find_elements(by=selector, value=".review_section"))
 
                         except NoSuchElementException:
                             reviews = 0
 
-                        available_additions = len(driver.find_elements(by=By.CSS_SELECTOR, value="table#service_upgrades_table tbody tr"))
-                        additions_price = sum(float(addition.find_element(by=By.CSS_SELECTOR, value=".service_upgrade_price").get_attribute("data-price")) for addition in driver.find_elements(by=By.CSS_SELECTOR, value="table#service_upgrades_table tbody tr"))
-                        owner_name = driver.find_element(by=By.CSS_SELECTOR, value="h3 a.sidebar_user").text.strip()
-                        verified_element = driver.find_elements(by=By.CSS_SELECTOR, value="img.verification-badge")
+                        available_additions = len(driver.find_elements(by=selector,
+                                                                       value="table#service_upgrades_table tbody tr"))
+
+                        additions_price = sum(float(addition.find_element(by=selector, value=".service_upgrade_price").
+                                                    get_attribute("data-price")) for addition in driver.
+                                              find_elements(by=selector, value="table#service_upgrades_table tbody tr"))
+
+                        owner_name = driver.find_element(by=selector, value="h3 a.sidebar_user").text.strip()
+
+                        verified_element = driver.find_elements(by=selector, value="img.verification-badge")
+
                         owner_verified = True if verified_element else False
-                        owner_level = driver.find_element(by=By.CSS_SELECTOR, value="ul.details-list li").text.strip()
-                        owner_url = driver.find_element(by=By.CSS_SELECTOR, value="h3 a.sidebar_user").get_attribute("href")
 
-                        print(f"Reviews: {reviews}")
-                        print(f"Available Additions: {available_additions}")
-                        print(f"Additions Price: {additions_price}")
-                        print(f"Owner Name: {owner_name}")
-                        print(f"Owner Verified: {owner_verified}")
-                        print(f"Owner Level: {owner_level}")
-                        print(f"Owner URL: {owner_url}")
+                        owner_level = driver.find_element(by=selector, value="ul.details-list li").text.strip()
 
-                        driver.get(owner_url)
+                        owner_url = driver.find_element(by=selector, value="h3 a.sidebar_user").get_attribute("href")
 
-                        owner_stars_elements = driver.find_element(by=By.CSS_SELECTOR, value="ul.c-list--rating").find_elements(by=By.CSS_SELECTOR, value="li.c-list__item i")
+                        driver.get(url=owner_url)
+
+                        owner_stars_elements = (driver.find_element(by=selector, value="ul.c-list--rating").
+                                                find_elements(by=selector, value="li.c-list__item i"))
                         owner_stars = 0.0
 
                         for star in owner_stars_elements:
@@ -129,19 +144,24 @@ def scrap(driver, category_name, category_url):
                             elif "fa-star" in star_class and "fa-star-o" not in star_class:
                                 owner_stars += 1
 
-                        owner_statistics = driver.find_element(by=By.CSS_SELECTOR, value=".card-body #sidebar")
-                        owner_raters = owner_statistics.find_element(by=By.CSS_SELECTOR, value=".c-list__item.info").text.strip("()")
-                        owner_completion_rate = owner_statistics.find_elements(by=By.CSS_SELECTOR, value=".list.col-6 span")[2].text.strip()
-                        owner_services = owner_statistics.find_elements(by=By.CSS_SELECTOR, value=".list.col-6 span")[4].find_element(by=By.TAG_NAME, value="a").text.strip() if owner_statistics.find_elements(by=By.CSS_SELECTOR, value=".list.col-6 span")[4].find_elements(by=By.TAG_NAME, value="a") else "0"
-                        owner_customers = owner_statistics.find_elements(by=By.CSS_SELECTOR, value=".list.col-6 span")[6].text.strip()
-                        owner_response_time = owner_statistics.find_elements(by=By.CSS_SELECTOR, value=".list.col-6")[9].text.strip()
+                        owner_statistics = driver.find_element(by=selector, value=".card-body #sidebar")
 
-                        print(f"Owner Stars: {owner_stars}")
-                        print(f"Owner Raters: {owner_raters}")
-                        print(f"Owner Completion Rate: {owner_completion_rate}")
-                        print(f"Owner Services: {owner_services}")
-                        print(f"Owner Customers: {owner_customers}")
-                        print(f"Owner Response Time: {owner_response_time}")
+                        owner_raters = owner_statistics.find_element(by=selector,
+                                                                     value=".c-list__item.info").text.strip("()")
+
+                        owner_completion_rate = owner_statistics.find_elements(by=selector,
+                                                                               value=".list.col-6 span")[2].text.strip()
+
+                        owner_services = (owner_statistics.find_elements(by=selector, value=".list.col-6 span")[4].
+                                          find_element(by=By.TAG_NAME, value="a").text.strip()) if (
+                            owner_statistics.find_elements(by=selector, value=".list.col-6 span")[4].
+                            find_elements(by=By.TAG_NAME, value="a")) else "0"
+
+                        owner_customers = owner_statistics.find_elements(by=selector,
+                                                                         value=".list.col-6 span")[6].text.strip()
+
+                        owner_response_time = owner_statistics.find_elements(by=selector,
+                                                                             value=".list.col-6")[9].text.strip()
 
                         data.append({"Category Name": category_name,
                                      "Category URL": category_url,
@@ -170,38 +190,29 @@ def scrap(driver, category_name, category_url):
                                      "Owner Customers": owner_customers,
                                      "Owner Response Time": owner_response_time})
 
-                        offers_collected += 1
-
                         driver.back()
                         time.sleep(1)
 
                         driver.back()
                         time.sleep(1)
 
-                        if offers_collected % 30 == 0:
-                            print(f"{offers_collected} Offers of {service_name} Collected!")
-                            print("عرض المزيد")
-
-                        if offers_collected >= max_offers:
-                            break
+                    if not new_offers_found:
+                        break
 
                 except StaleElementReferenceException:
                     driver.refresh()
                     time.sleep(2)
 
-            services_dir = os.path.join("khamsat", category_name)
-            os.makedirs(services_dir, exist_ok=True)
-            service_file = os.path.join(services_dir, f"{service_collected + 1}_of_services.csv")
-
-            pd.DataFrame(data).to_csv(path_or_buf=service_file, index=False)
-            print(f"Service: {service_name} Completed!")
-
             service_collected += 1
-            driver.get(category_url)
-            services = driver.find_elements(by=By.CSS_SELECTOR, value=".grid-items a.lh-lg")
+
+            driver.get(url=category_url)
+
+            services = driver.find_elements(by=selector, value=".grid-items a.lh-lg")
 
         category_dir = os.path.join("khamsat", "categories")
+
         os.makedirs(category_dir, exist_ok=True)
+
         category_file = os.path.join(category_dir, f"{category_name}.csv")
 
         pd.DataFrame(data).to_csv(path_or_buf=category_file, index=False)
@@ -209,6 +220,7 @@ def scrap(driver, category_name, category_url):
 
     except Exception as e:
         print(f"Error: {e}")
+
 
 categories_meta = {"تصميم": "https://khamsat.com/designing",
                    "كتابة وترجمة": "https://khamsat.com/writing",
@@ -222,6 +234,16 @@ categories_meta = {"تصميم": "https://khamsat.com/designing",
                    "بيانات": "https://khamsat.com/data",
                    "أسلوب حياة": "https://khamsat.com/lifestyle"}
 
+
 chrome = Chrome()
-scrap(driver=chrome, category_name="صوتيات", category_url="https://khamsat.com/audio")
+
+for category_name, category_url in categories_meta.items():
+    scrap(driver=chrome, category_name=category_name, category_url=category_url)
+
 chrome.quit()
+
+files = [file for file in os.listdir("khamsat/categories") if file.endswith(".csv")]
+
+khamsat = pd.concat([pd.read_csv(os.path.join("khamsat/categories", file)) for file in files], ignore_index=True)
+
+khamsat.to_csv(path_or_buf="khamsat.csv", index=False)
