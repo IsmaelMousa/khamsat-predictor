@@ -14,7 +14,7 @@ def load(columns: list[str]) -> dict[str, int | float]:
     :return:
     """
     new_values = {}
-    path = "./to_numeric"
+    path = "/home/ismael/Projects/khamsat-predictor/mappers/to_numeric"
 
     for col in columns:
         file_name = col.lower().replace(" ", "_") + ".json"
