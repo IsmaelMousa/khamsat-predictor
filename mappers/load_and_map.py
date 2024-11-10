@@ -9,12 +9,15 @@ warnings.simplefilter(action="ignore", category=FutureWarning)
 
 def load(columns: list[str]) -> dict[str, int | float]:
     """
-    TODO
-    :param columns:
-    :return:
+    Loads numeric mappings from JSON files for the specified columns.
+
+    :param columns: list of column names
+    :return: a dictionary mapping each column to its numeric values
     """
     new_values = {}
-    path = "/home/ismael/Projects/khamsat-predictor/mappers/to_numeric"
+
+    root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    path = os.path.join(root, "mappers", "to_numeric")
 
     for col in columns:
         file_name = col.lower().replace(" ", "_") + ".json"
@@ -31,10 +34,11 @@ def load(columns: list[str]) -> dict[str, int | float]:
 
 def to_numeric(data_frame: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
     """
-    TODO
-    :param data_frame:
-    :param columns:
-    :return:
+    Converts specified columns in the DataFrame to numeric values based on predefined mappings.
+
+    :param data_frame: the dataset as a dataframe
+    :param columns: list of column names
+    :return: dataframe with converted columns
     """
     columns = [col.title() for col in columns]
 
