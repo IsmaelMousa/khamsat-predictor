@@ -4,19 +4,22 @@ import json
 
 def rounded(minutes: int | float) -> float:
     """
-    TODO
-    :param minutes:
-    :return hours:
+    Converts minutes to hours and rounds the result to 3 decimal places.
+
+    :param minutes: number of minutes
+    :return: number of hours
     """
     hours = round(minutes / 60, 3)
+
     return hours
 
 
 def to_numeric(path: str) -> None:
     """
-    TODO
-    :param path:
-    :return:
+    Converts text-based time values to numeric hours and saves them to JSON files in the specified path.
+
+    :param path: the path of the mappers directory
+    :return: a printed message indicating success
     """
     os.makedirs(path, exist_ok=True)
 
