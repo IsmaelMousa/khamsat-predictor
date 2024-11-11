@@ -76,8 +76,8 @@ Introduction to the dataset, its structure, and relevant characteristics:
 
 4. **Missing Values**:
    * There are no direct missing values like NaN, but there are values that are considered missing, such as:
-     1. لم يحسب
-     2. لم يحسب بعد
+     1. ."لم يحسب"
+     2. ."لم يحسب بعد"
      
    * Features:
      1. Offer Response Time: 1806 of "لم يحسب" values.  
