@@ -1,10 +1,29 @@
-# Khamsat (خ5سات) Predictor
+# Khamsat Predictor
 
->[!IMPORTANT]
-> 
-> Hello, Smile :)
+Utilizing web scraping and machine learning techniques to accurately predict **Khamsat (خ5سات)** service prices.
 
->[!NOTE]
-> 1. Prepare the linter (Pylint)
-> 2. Prepare the unittest (Pytest)
-> 3. Prepare the CI (github actions)
+## Overview
+
+...
+
+## Objective
+...
+
+## Approach
+
+...
+
+## Workflow
+
+...
+
+## Technologies
+
+...
+
+## Results
+...
+
+## Usage
+
+...
