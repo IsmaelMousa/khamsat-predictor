@@ -1,0 +1,15 @@
+artifact_uri: /home/ismael/Projects/khamsat-predictor/experiments/Ridge Regression/0/cca296f4990c4135995924edb92a88f3/artifacts
+end_time: 1733086996924
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cca296f4990c4135995924edb92a88f3
+run_name: Ridge Regression
+run_uuid: cca296f4990c4135995924edb92a88f3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1733086995640
+status: 3
+tags: []
+user_id: ismael

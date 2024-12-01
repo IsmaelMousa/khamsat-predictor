@@ -1,0 +1,15 @@
+artifact_uri: /home/ismael/Projects/khamsat-predictor/experiments/Linear Regression/0/e2404860d61e4d809d11668ad8688018/artifacts
+end_time: 1733086979152
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e2404860d61e4d809d11668ad8688018
+run_name: Linear Regression
+run_uuid: e2404860d61e4d809d11668ad8688018
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1733086977400
+status: 3
+tags: []
+user_id: ismael
