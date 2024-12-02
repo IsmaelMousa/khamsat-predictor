@@ -1,0 +1,15 @@
+artifact_uri: /home/ismael/Projects/khamsat-predictor/experiments/Lasso Regression/0/5b803d40c58a46de87ee7b07576e4c9a/artifacts
+end_time: 1733142031998
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5b803d40c58a46de87ee7b07576e4c9a
+run_name: Lasso Regression
+run_uuid: 5b803d40c58a46de87ee7b07576e4c9a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1733142030645
+status: 3
+tags: []
+user_id: ismael
