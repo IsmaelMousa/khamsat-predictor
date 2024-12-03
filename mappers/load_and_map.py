@@ -4,7 +4,7 @@ import warnings
 
 import pandas as pd
 
-warnings.simplefilter(action="ignore", category=FutureWarning)
+warnings.simplefilter(action="ignore")
 
 
 def load(columns: list[str]) -> dict[str, int | float]:
@@ -40,8 +40,6 @@ def to_numeric(data_frame: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
     :param columns: list of column names
     :return: dataframe with converted columns
     """
-    columns = [col.title() for col in columns]
-
     numeric_values = load(columns=columns)
 
     data_frame[columns] = data_frame[columns].replace(numeric_values)
