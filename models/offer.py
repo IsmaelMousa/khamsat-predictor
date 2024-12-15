@@ -51,16 +51,6 @@ class OwnerLevel(str, Enum):
     LEVEL_7 = "بائع موثوق"
     LEVEL_8 = "بائع مميز"
 
-
-class PriceCategory(str, Enum):
-    """
-    TODO
-    """
-    BRONZE = "Bronze"
-    SILVER = "Silver"
-    GOLD = "Gold"
-
-
 class Request(BaseModel):
     """
     TODO
@@ -90,4 +80,5 @@ class Response(BaseModel):
     """
     TODO
     """
-    price: PriceCategory
+    status: int
+    message: str
