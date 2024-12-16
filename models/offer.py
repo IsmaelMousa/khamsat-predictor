@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 
 class CategoryName(str, Enum):
     """
-    TODO
+    Represents the available categories for a request.
     """
     DESIGN = "تصميم"
     WRITING = "كتابة وترجمة"
@@ -23,7 +23,7 @@ class CategoryName(str, Enum):
 
 class Duration(str, Enum):
     """
-    TODO
+    Represents the durations available for completing a request.
     """
     DAY_1 = "يوم واحد"
     DAY_2 = "يومين"
@@ -39,7 +39,7 @@ class Duration(str, Enum):
 
 class OwnerLevel(str, Enum):
     """
-    TODO
+    Represents the various levels for the offer owner.
     """
     LEVEL_0 = "مستخدم جديد"
     LEVEL_1 = "مشتري جاد"
@@ -53,7 +53,7 @@ class OwnerLevel(str, Enum):
 
 class Request(BaseModel):
     """
-    TODO
+    Represents a request with detailed attributes for a specific service.
     """
     category_name: CategoryName
     service_name: Annotated[str, Field(min_length=4)] = "أخرى"
@@ -78,7 +78,7 @@ class Request(BaseModel):
 
 class Response(BaseModel):
     """
-    TODO
+    Represents a generic API response with status and message.
     """
     status: int
     message: str
