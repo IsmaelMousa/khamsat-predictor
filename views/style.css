@@ -1,16 +1,11 @@
 body {
     background-color: #121212;
-    color: #fff;
+    direction: rtl;
+    text-align: right;
 }
 
 .container {
     background-color: #1f1f1f;
-    padding: 50px;
-    border-radius: 8px;
-}
-
-h1 {
-    color: #f1f1f1;
 }
 
 .form-label {
@@ -21,12 +16,14 @@ h1 {
     background-color: #333;
     color: #fff;
     border: 1px solid #555;
+    text-align: right;
 }
 
 .form-select {
     background-color: #333;
     color: #fff;
     border: 1px solid #555;
+    text-align: right;
 }
 
 .form-check-label {
@@ -35,13 +32,6 @@ h1 {
 
 .logo {
     max-height: 50px;
-    vertical-align: middle;
-}
-
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
 }
 
 .form-part {
@@ -56,10 +46,4 @@ h1 {
     border-bottom: 2px solid #444;
     padding-bottom: 10px;
     margin-bottom: 15px;
-}
-
-@media (max-width: 768px) {
-    .form-row {
-        flex-direction: column;
-    }
 }
