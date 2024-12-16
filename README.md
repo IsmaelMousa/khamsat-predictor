@@ -1,207 +1,166 @@
 # Khamsat Predictor
 
-Utilizing web scraping and machine learning techniques to accurately predict **Khamsat (خ5سات)** service prices.
+Utilizing web scraping and machine learning techniques to accurately predict [khamsat.com](https://khamsat.com/) service
+prices.
+
+> [!IMPORTANT]
+>
+> The data utilized in this project is the property of the Khamsat platform, with all associated rights reserved to them. This project, however, is an independent endeavor and solely owned by me, with no affiliation to any institution or organization.
+> 
+
 
 ## Overview
 
-...
+Present the **Khamsat Predictor**, a machine learning model designed to address challenges in the freelance marketplace.
+By analyzing data from [khamsat.com](https://khamsat.com/), the largest platform for Arab freelancers, the predictor
+offers accurate
+price estimates based on service characteristics. This ensures transparency, fosters trust, and alleviates price-related
+anxiety for both sellers and clients. The model integrates classical machine learning techniques, employing structured
+methodologies from data collection to deployment.
 
 ## Objective
-...
 
-## Approach
-
-...
+The goal is to develop an AI-based pricing model that predicts accurate prices for freelance
+services listed on Khamsat. By analyzing historical data from the platform, the model helps both sellers and clients
+make
+informed decisions.
 
 ## Workflow
 
-...
+The project follows a structured strategy with five key phases:
+
+1. **Data Collection**: Data was scraped from Khamsat using Selenium to handle dynamic elements and navigate through
+   menus.
+2. **Exploratory Data Analysis (EDA)**: Key patterns were uncovered in the data, identifying correlations and resolving
+   format inconsistencies.
+3. **Data Preprocessing**: Placeholder values were cleaned, and categorical features were encoded.
+4. **Modeling**: Various classical machine learning models (such as SoftMax Regression, Support Vector Classifier, and
+   Random Forest Classifier) were trained and optimized.
+5. **Deployment**: The trained models were deployed using FastAPI, providing a user-friendly interface for price
+   predictions.
+
+## Modules
+The project files should be like this.
+```zsh
+khamsat-predictor
+ ├── data
+ │   ├── raw
+ │   ├── balanced.csv
+ │   ├── clean.csv
+ │   ├── raw.csv
+ │   └── scraper.py
+ ├── experiments 
+ │   ├── Random Forest Classifier
+ │   │   └── 0
+ │   │       ├── balanced
+ │   │       ├── imbalanced
+ │   │       └── meta.yaml
+ │   ├── SoftMax Regression
+ │   │   └── 0
+ │   │       ├── balanced
+ │   │       ├── imbalanced
+ │   │       └── meta.yaml
+ │   └── SVC
+ │       └── 0
+ │           ├── balanced
+ │           ├── imbalanced
+ │           └── meta.yaml
+ ├── mappers 
+ │   ├── to_categorical
+ │   │   └── feature_names.json
+ │   ├── to_numeric
+ │   │   ├── category_name.json
+ │   │   ├── duration.json
+ │   │   ├── offer_response_time.json
+ │   │   ├── owner_level.json
+ │   │   ├── owner_response_time.json
+ │   │   └── service_name.json
+ │   ├── __init__.py
+ │   ├── features.py
+ │   ├── load_and_map.py
+ │   └── one_hot.py
+ │   
+ ├── models 
+ │   ├── __init__.py
+ │   └── offer.py
+ ├── notebooks
+ │   ├── eda.ipynb
+ │   ├── preprocessing.ipynb
+ │   └── modeling.ipynb
+ ├── routers
+ │   ├── __init__.py
+ │   └── offer.py
+ ├── views
+ │   ├── images
+ │   ├── index.html
+ │   ├── index.js
+ │   └── style.css     
+ ├── .gitignore
+ ├── LICENSE.md
+ ├── main.py
+ ├── README.md
+ ├── requirements.txt
+ └── requirements-dev.txt
+```
+
+
+
+Here is a summary for the purpose of each major module or component in the project.
+
+|         Module         | Purpose                                                                                                                                                                                       |
+|:----------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|         `data`         | Contains the scraper utility for extracting data and the files representing datasets used in the project.                                                                                     |
+|     `experiments`      | Stores the results of experiments, including trained models, hyperparameter configurations, and the metrics associated with their performance.                                                |
+|       `mappers`        | Handles the transformation of text-based data into numerical formats, including custom encoding techniques for model compatibility.                                                           |
+|        `models`        | Contains Pydantic models (schemas) used for data validation and serialization between different layers of the application.                                                                    |
+|      `notebooks`       | Includes Jupyter notebooks that illustrate the workflow across the three phases: data exploration, preprocessing, and modeling, offering a clear representation of the project’s progression. |
+|       `routers`        | Manages API route definitions, linking frontend requests to backend functionalities, including data processing and prediction endpoints.                                                      |
+|        `views`         | Responsible for rendering frontend templates or static files, providing the visual interface for interacting with the application.                                                            |
+|       `main.py`        | Serves as the project's entry point, initializing the application and orchestrating its components.                                                                                           |
+|   `requieremnts.txt`   | Lists the dependencies required to run the application, ensuring that all necessary libraries and tools are installed.                                                                        |
+| `requierments-dev.txt` | Specifies additional dependencies for development purposes.                                                                                                                                   |
 
 ## Technologies
 
-...
+This table shows the technologies and tools that are used in Khamsat Predictor.
+
+|    Dependency     | Usage                                                                                                               | Phase              |
+|:-----------------:|---------------------------------------------------------------------------------------------------------------------|--------------------|
+|    `selenium`     | Used to interact with Khamsat website and collect (scrap) dynamic content.                                          | Data Collection    |
+|     `mlflow`      | Managing the machine learning lifecycle and operations (MLOps), including experiment tracking and model management. | Modeling           |
+|     `optuna`      | Used to Tune and optimize model hyperparameters for better performance.                                             | Modeling           |
+|  `scikit-learn`   | Implementing the mathematical formulations and implementations of the models.                                       | Modeling           |
+|     `pandas`      | Used for handling datasets, cleaning, and preprocessing the data.                                                   | EDA, Preprocessing |
+|      `numpy`      | Used for working with arrays and mathematical operations in data processing.                                        | Preprocessing      |
+|   `matplotlib`    | Creating plots and graphs for visualizing trends in the data.                                                       | EDA                |
+|     `seaborn`     | Used for more advanced and aesthetically pleasing plots.                                                            | EDA                |
+| `arabic_reshaper` | Reshaping Arabic text, ensuring that it displays correctly when visualized in plots or graphs.                      | EDA                |
+|   `python-bidi`   | Facilitates bidirectional text rendering, useful for displaying Arabic script.                                      | EDA                |
+|     `fastapi`     | Used to build the interface for price prediction, allowing the model to interact with users in real-time.           | Deployment         |
+|    `Bootstrap`    | Building responsive and visually appealing user interfaces.                                                         | Deployment         |
+|   `JavaScript`    | Creating dynamic, interactive elements in the web interface.                                                        | Deployment         |
+|       `CSS`       | Format the appearance of the web interface, including layout, colors, and fonts.                                    | Deployment         |
+|      `HTML`       | Structure the web interface and content for price prediction.                                                       | Deployment         |
 
 ## Results
-...
+
+The project successfully identified key correlations in the dataset, such as the impact of **Service Name**, **Additions
+Price**, and **Owner Level** on the price prediction. After cleaning the data and addressing missing values, several
+models were trained, and the SVC showed the best performance in terms of accuracy and F1 score. The
+model is now capable of providing price predictions based on offer features with high accuracy.
+
+The table here presents the results for each model.
+
+| **Model**                | **Loss** | **Accuracy** | **Precision** | **Recall** | **F1**  |
+|:-------------------------|:--------:|:------------:|:-------------:|:----------:|:-------:|
+| SoftMax Regression       |   0.95   |     68%      |      66%      |    68%     |   67%   |
+| SVC                      |   0.05   |   **98%**    |    **98%**    |  **98%**   | **98%** |
+| Random Forest Classifier |   0.23   |     97%      |      97%      |    97%     |   97%   |
 
 ## Usage
 
-...
+To use the Khamsat Predictor, simply access the deployed FastAPI interface, where you can input key features of a
+service offer, and the model will predict the price for you. The platform ensures seamless and real-time price
+predictions based on the features you provide.
 
-
-## EDA:
-# EDA Summary
-
-Summarizes the exploratory data analysis, highlighting key findings, challenges encountered, decisions made,
-and the next steps for further analysis.
-
-## Overview
-
-Introduction to the dataset, its structure, and relevant characteristics:
-
-1. **Dataset**:
-    * Language: arabic.
-    * Size: 7818 rows, 26 columns.
-    * Data Types: 11 numerical, 14 categorical, 1 boolean.
-    * Missing Values: there is no missing.
-    * Duplicated Values: there is no duplication.
-    * Bias Exist: yes.
-
-
-2. **Features**:
-    * Category Name: name of the category under which the service is listed.
-    * Category URL: link to the category main page which contains list of services.
-    * Service Name: name of the service being offered.
-    * Service URL: link to the service main page which contains list of offers.
-    * Offer Name:  name of the specific offer.
-    * Offer URL: link to the offer main page.
-    * Offer Stars: average rating in stars from 5 given to the offer.
-    * Offer Raters: number of users who have rated the offer.
-    * Offer Response Time: average time it takes to respond to inquiries for the offer.
-    * Offer Buyers: number of people who have purchased the offer.
-    * Pending: number of pending orders or requests for the offer.
-    * Price: cost of the offer in $USD.
-    * Duration: offer's delivery time to the client.
-    * Reviews: number of feedback provided by clients who have used the offer.
-    * Available Additions: number of available additional features that can be added with the offer.
-    * Additions Price: total price of the additional features, without the original price.
-    * Owner Name: name of the person offering the offer (seller).
-    * Owner URL: link to the owner's main page.
-    * Owner Verified: indicates whether the owner has been verified
-    * Owner Level: owner's level or rank in the system.
-    * Owner Stars: average rating in stars from 5 given to the owner.
-    * Owner Raters: number of users who have rated the owner.
-    * Owner Completion Rate: percentage of completed/delivered services by the owner.
-    * Owner Services: number of services offered by the owner.
-    * Owner Customers: number of clients the owner has served.
-    * Owner Response Time: average time it takes for the owner to respond to inquiries.
-
-
-3. **Data Types**:
-    * Category Name: object.
-    * Category URL: object.
-    * Service Name: object.
-    * Service URL: object.
-    * Offer Name:  object.
-    * Offer URL: object.
-    * Offer Stars: float.
-    * Offer Raters: integer.
-    * Offer Response Time: object.
-    * Offer Buyers: integer.
-    * Pending: integer.
-    * Price: object.
-    * Duration: object.
-    * Reviews: integer.
-    * Available Additions: integer.
-    * Additions Price: integer.
-    * Owner Name: object.
-    * Owner URL: object.
-    * Owner Verified: bool.
-    * Owner Level: object.
-    * Owner Stars: float.
-    * Owner Raters: integer.
-    * Owner Completion Rate: object.
-    * Owner Services: integer.
-    * Owner Customers: integer.
-    * Owner Response Time: object.
-
-
-4. **Missing Values**:
-    * There are no direct missing values like NaN, but there are values that are considered missing, such as:
-        1. ."لم يحسب"
-        2. ."لم يحسب بعد"
-
-    * Features:
-        1. Offer Response Time: 1806 of "لم يحسب" values.
-        2. Owner Response Time: 1258 of "لم يحسب" values.
-        3. Owner Completion Rate: 1362 of "لم يحسب بعد" values.
-
-
-5. **Target**:
-    * Price: cost of the offer in $USD.
-        1. Min Price: $5.
-        2. Max Price: $50.
-        3. Intervals: the price intervals are $5.
-
-## Insights
-
-Observations discovered through data exploration:
-
-1. **Most Frequent Values**:
-    * Price: $5.
-    * Category: "برمجة وتطوير".
-    * Duration: "يوم واحد".
-    * Offer Response Time: "لم يحسب".
-    * Owner Response Time: "لم يحسب".
-    * Owner Completion Rate: 100%.
-    * Offer Stars: 5.0.
-    * Owner Stars: 5.0.
-    * Owner Level: "بائع مميز".
-
-
-2. **Outliers Counts**:
-    * Offer Stars: 0.
-    * Offer Raters: 867.
-    * Offer Response Time: 804.
-    * Offer Buyers: 988.
-    * Pending: 425.
-    * Price: 856.
-    * Duration: 916.
-    * Reviews: 0.
-    * Available Additions: 0.
-    * Additions Price: 506.
-    * Owner Stars: 1711.
-    * Owner Raters: 815.
-    * Owner Completion Rate: 432.
-    * Owner Services: 523.
-    * Owner Customers: 812.
-    * Owner Response Time: 719.
-
-
-3. **Top Correlations (Pearson's R With Price)**:
-    * Service Name: 44.16%
-    * Additions Price: 30.80%
-    * Owner Level: 29.33%
-    * Owner Services: 24.32%
-    * Owner Raters: 19.57%
-    * Owner Customers: 17.40%
-    * Owner Stars: 15.79%
-    * Category Name: 14.54%
-    * Reviews: 13.95%
-
-## Challenges
-
-Data issues, limitations, and obstacles encountered during the analysis:
-
-1. **Data Size**: the data size is a bit small, but so far it is acceptable.
-
-
-2. **Data Missing**: I've mentioned above that there are no direct missing values like NaN, but there are values that
-   are considered missing, such as: "لم يحسب" and "لم يحسب بعد", and if we calculate the percentage of samples sharing
-   these values relative to the total data size is **15.41%** which is large.
-
-
-3. **Data Formats**: some features that have a numerical meaning are recorded as text, such as:
-    1. Price.
-    2. Duration.
-    3. Offer Response Time.
-    4. Owner Response Time.
-    5. Owner Completion Rate.
-
-4. **Data Bias**: there is a reasonable bias in the data, prices like $5 and $10 and so on...
-
-## Decisions
-
-Actions and strategies will be decided based on the exploratory analysis:
-
-1. **Mapping Utility**: build a utility to convert text-based values into numerical values.
-
-
-2. **Missing Data Imputation**: experiment with different imputation techniques to identify the most effective method
-   for handling missing data.
-
-
-3. **Feature Selection**: apply unsupervised learning techniques to identify the most relevant features.
-
-4. **Encoding Categorical Features**: select the appropriate encoding technique based on the characteristics of the
-   categorical features.
+[![Subtitle](https://readme-typing-svg.demolab.com?font=Helvetica&weight=600&size=15&pause=1000&color=64B5F6&random=false&width=435&lines=khamsat-predictor.com)](https://github.com/IsmaelMousa/TTL)
