@@ -26,9 +26,8 @@ document.getElementById("offer-form").addEventListener("submit", function (event
     };
 
     const resultContainer = document.getElementById("result");
-    resultContainer.classList.add("show");
 
-    console.log(JSON.stringify(offerData))
+    resultContainer.classList.add("show");
 
     fetch("http://127.0.0.1:8000/offer/", {
         method: "POST",
