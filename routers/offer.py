@@ -11,13 +11,20 @@ root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "experiment
 model_path = os.path.join(root, "Random Forest Classifier", "0", "balanced", "artifacts", "model", "model.pkl")
 
 model = joblib.load(model_path)
+
 feature_names = get_names()
 database = {}
 router = APIRouter(prefix="/offer", tags=["Offer"])
 
 
 @router.post(path="/", summary="Enter the offer features.")
-def enter(request: Request):
+def enter(request: Request) -> dict:
+    """
+    Stores the offer details that entered by the user after preprocessing and encoding.
+
+    :param request: Offer details sent as a request payload
+    :return: Response with status and success message
+    """
     data = request.model_dump()
     data = to_numeric(pd.DataFrame([data]), columns=["duration", "offer_response_time", "owner_response_time", "owner_level"])
 
@@ -33,7 +40,13 @@ def enter(request: Request):
     return Response(status=status.HTTP_201_CREATED, message="Successfully entered offer information.").model_dump()
 
 @router.get(path="/{offer_id}", summary="Predict the price.")
-def get_offer(offer_id: int):
+def get_offer(offer_id: int) -> dict:
+    """
+    Predicts the price of an offer based on its features that has a corresponding offer ID.
+
+    :param offer_id: the ID of the offer in the database
+    :return: Response with status and the predicted price or an error message
+    """
     if offer_id in database:
         data = pd.DataFrame([database[offer_id]])
 
