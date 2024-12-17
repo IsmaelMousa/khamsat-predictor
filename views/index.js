@@ -29,7 +29,7 @@ document.getElementById("offer-form").addEventListener("submit", function (event
 
     resultContainer.classList.add("show");
 
-    fetch("http://0.0.0.0:10000/offer/", {
+    fetch("https://0.0.0.0:10000/offer/", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(offerData)
@@ -45,7 +45,7 @@ document.getElementById("offer-form").addEventListener("submit", function (event
 function fetchPrice() {
     const offerId = 0;
 
-    fetch(`http://0.0.0.0:10000/offer/${offerId}`).then(response => response.json()).then(data => {
+    fetch(`https://0.0.0.0:10000/offer/${offerId}`).then(response => response.json()).then(data => {
         document.getElementById("result").textContent = data.message;
     });
 }
