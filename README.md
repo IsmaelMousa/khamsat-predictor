@@ -1,12 +1,15 @@
 # Khamsat Predictor
 
-Utilizing web scraping and machine learning techniques to accurately predict <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a> service
+Utilizing web scraping and machine learning techniques to accurately
+predict <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
+service
 prices.
 
 > [!IMPORTANT]
 >
-> The data utilized in this project is the property of the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
-  platform, with all associated rights reserved to
+> The data utilized in this project is the property of
+> the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
+> platform, with all associated rights reserved to
 > them. This project, however, is an independent endeavor and solely owned by me, with no affiliation to any institution
 > or organization.
 >
@@ -14,11 +17,15 @@ prices.
 ## Overview
 
 Present the **Khamsat Predictor**, a machine learning model designed to address challenges in the freelance marketplace.
-By analyzing data from <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>, the largest platform for Arab freelancers, the predictor
+By analyzing data
+from <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>,
+the largest platform for Arab freelancers, the predictor
 offers accurate
 price estimates based on service characteristics. This ensures transparency, fosters trust, and alleviates price-related
 anxiety for both sellers and clients. The model integrates classical machine learning techniques, employing structured
 methodologies from data collection to deployment.
+
+![Demo](./views/images/preview.png)
 
 ## Objective
 
@@ -199,11 +206,12 @@ pip install -r requirements.txt
 uvicorn main:app --host localhost --port 8080
 ```
 
-7. Finally, navigate to [http://localhost:8080](http://localhost:8080)
+7. Navigate to [http://localhost:8080](http://localhost:8080), and start using it.
 
 --- 
 
 ## Acknowledgments
+
 I'm grateful to [Prof. Adnan Salman](https://scholar.google.com/citations?user=MXOIQ3cAAAAJ&hl=en)
 and [Eng. Samer Huwari](https://www.linkedin.com/in/samerhuwari) for their fruitful
 comments, corrections and inspiration.
