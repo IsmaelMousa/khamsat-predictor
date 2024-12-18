@@ -1,18 +1,20 @@
 # Khamsat Predictor
 
-Utilizing web scraping and machine learning techniques to accurately predict [khamsat.com](https://khamsat.com/) service
+Utilizing web scraping and machine learning techniques to accurately predict <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a> service
 prices.
 
 > [!IMPORTANT]
 >
-> The data utilized in this project is the property of the Khamsat platform, with all associated rights reserved to them. This project, however, is an independent endeavor and solely owned by me, with no affiliation to any institution or organization.
-> 
-
+> The data utilized in this project is the property of the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
+  platform, with all associated rights reserved to
+> them. This project, however, is an independent endeavor and solely owned by me, with no affiliation to any institution
+> or organization.
+>
 
 ## Overview
 
 Present the **Khamsat Predictor**, a machine learning model designed to address challenges in the freelance marketplace.
-By analyzing data from [khamsat.com](https://khamsat.com/), the largest platform for Arab freelancers, the predictor
+By analyzing data from <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>, the largest platform for Arab freelancers, the predictor
 offers accurate
 price estimates based on service characteristics. This ensures transparency, fosters trust, and alleviates price-related
 anxiety for both sellers and clients. The model integrates classical machine learning techniques, employing structured
@@ -40,7 +42,9 @@ The project follows a structured strategy with five key phases:
    predictions.
 
 ## Modules
+
 The project files should be like this.
+
 ```zsh
 khamsat-predictor
  ├── data
@@ -103,8 +107,6 @@ khamsat-predictor
  └── requirements-dev.txt
 ```
 
-
-
 Here is a summary for the purpose of each major module or component in the project.
 
 |         Module         | Purpose                                                                                                                                                                                       |
@@ -159,8 +161,49 @@ The table here presents the results for each model.
 
 ## Usage
 
-To use the Khamsat Predictor, simply access the deployed FastAPI interface, where you can input key features of a
-service offer, and the model will predict the price for you. The platform ensures seamless and real-time price
-predictions based on the features you provide.
+#### Follow the instructions bellow to use the Khamsat Predictor:
 
-[![Subtitle](https://readme-typing-svg.demolab.com?font=Helvetica&weight=600&size=15&pause=1000&color=64B5F6&random=false&width=435&lines=khamsat-predictor.com)](https://github.com/IsmaelMousa/TTL)
+1. Clone this repository to your local machine:
+
+```zsh
+git clone git@github.com:IsmaelMousa/khamsat-predictor.git
+```
+
+2. Navigate to the khamsat-predictor directory
+
+```zsh
+cd khamsat-predictor
+```
+
+3. Setup virtual environment
+
+```zsh
+python3 -m venv .venv
+```
+
+4. Activate the virtual environment
+
+```zsh
+source .venv/bin/activate
+```
+
+5. Install the required dependencies
+
+```zsh
+pip install -r requirements.txt
+```
+
+6. Run the server program
+
+```
+uvicorn main:app --host localhost --port 8080
+```
+
+7. Finally, navigate to [http://localhost:8080](http://localhost:8080)
+
+--- 
+
+## Acknowledgments
+I'm grateful to [Prof. Adnan Salman](https://scholar.google.com/citations?user=MXOIQ3cAAAAJ&hl=en)
+and [Eng. Samer Huwari](https://www.linkedin.com/in/samerhuwari) for their fruitful
+comments, corrections and inspiration.
