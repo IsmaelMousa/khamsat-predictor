@@ -3,7 +3,9 @@
 Utilizing web scraping and machine learning techniques to accurately
 predict <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
 service
-prices.
+prices. 
+
+Read the official paper: [khamsat predictor paper](paper.pdf).
 
 > [!IMPORTANT]
 >
