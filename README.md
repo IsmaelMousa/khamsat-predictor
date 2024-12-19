@@ -52,7 +52,7 @@ The project follows a structured strategy with five key phases:
 
 ## Modules
 
-The project files should be like this.
+This shows the project's skeleton.
 
 ```zsh
 khamsat-predictor
