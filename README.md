@@ -27,7 +27,7 @@ price estimates based on service characteristics. This ensures transparency, fos
 anxiety for both sellers and clients. The model integrates classical machine learning techniques, employing structured
 methodologies from data collection to deployment.
 
-[![Khamsat Predictor Preview](./views/images/preview.png)](https://www.youtube.com/watch?v=BK-aOiAEoUw)
+[![Khamsat Predictor Preview](./views/images/preview.png)](https://www.youtube.com/watch?v=oIz-x4ZGw_s)
 
 ## Objective
 
