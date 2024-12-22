@@ -91,3 +91,14 @@ select {
 select::-webkit-scrollbar {
     display: none;
 }
+
+input:hover,
+select:hover,
+.form-part:hover{
+    transform: scale(1.01);
+}
+
+.btn-warning:hover {
+    background-color: #1f1f1f;
+    color: var(--bs-warning);
+}

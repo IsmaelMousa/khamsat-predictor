@@ -62,7 +62,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="offer_raters" class="form-label">التقييمات</label>
-                    <input type="number" id="offer_raters" name="offer_raters" class="form-control" value="0" min="0">
+                    <input type="number" id="offer_raters" name="offer_raters" class="form-control" value="0" min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="duration" class="form-label">مدة التسليم</label>
@@ -227,17 +227,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="owner_raters" class="form-label">التقييمات</label>
-                    <input type="number" id="owner_raters" name="owner_raters" class="form-control" value="0" min="0">
+                    <input type="number" id="owner_raters" name="owner_raters" class="form-control" value="0" min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="owner_services" class="form-label">عدد الخدمات</label>
                     <input type="number" id="owner_services" name="owner_services" class="form-control" value="0"
-                           min="0">
+                           min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="owner_customers" class="form-label">عدد العملاء</label>
                     <input type="number" id="owner_customers" name="owner_customers" class="form-control" value="0"
-                           min="0">
+                           min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="owner_response_time" class="form-label">متوسط سرعة الرد</label>
@@ -356,7 +356,7 @@
                 <div class="form-check text-center">
                     <input type="checkbox" id="owner_verified" name="owner_verified" class="btn-check" checked>
                     <label for="owner_verified" id="owner_verified_label"
-                           class="btn btn-outline-success border border-0 shadow mt-2">هوية موثقة</label>
+                           class="btn btn-outline-success border border-0 shadow mt-2"> هوية موثقة<i class="bi bi-check-circle me-2"></i></label>
                 </div>
 
             </div>
@@ -364,30 +364,30 @@
                 <h2 class="section-title text-center">معلومات إضافية</h2>
                 <div class="mb-3">
                     <label for="pending" class="form-label">طلبات جاري تنفيذها</label>
-                    <input type="number" id="pending" name="pending" class="form-control" value="0" min="0">
+                    <input type="number" id="pending" name="pending" class="form-control" value="0" min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="reviews" class="form-label">الآراء</label>
-                    <input type="number" id="reviews" name="reviews" class="form-control" value="0" min="0">
+                    <input type="number" id="reviews" name="reviews" class="form-control" value="0" min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="available_additions" class="form-label">التطويرات المتوفرة</label>
                     <input type="number" id="available_additions" name="available_additions" class="form-control"
-                           value="0" min="0">
+                           value="0" min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="additions_price" class="form-label">سعر التطويرات</label>
                     <input type="number" id="additions_price" name="additions_price" class="form-control" value="0"
-                           min="0">
+                           min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="offer_buyers" class="form-label">المشترين</label>
-                    <input type="number" id="offer_buyers" name="offer_buyers" class="form-control" value="0" min="0">
+                    <input type="number" id="offer_buyers" name="offer_buyers" class="form-control" value="0" min="0" required>
                 </div>
                 <div class="mb-3">
                     <label for="owner_completion_rate" class="form-label">معدل إكمال الطلبات</label>
                     <input type="number" id="owner_completion_rate" name="owner_completion_rate" class="form-control"
-                           value="100" min="0" max="100">
+                           value="50" min="0" max="100" required>
                 </div>
             </div>
         </div>

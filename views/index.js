@@ -176,12 +176,14 @@ function fetchPrice() {
 
 document.getElementById("owner_verified").addEventListener("change", function () {
     const label = document.getElementById("owner_verified_label");
+
     if (this.checked) {
-        label.textContent = "هوية موثقة";
+        label.innerHTML = 'هوية موثقة';
+        label.innerHTML += '<i class="bi bi-check-circle me-2"></i>'
         label.classList.remove("btn-outline-danger");
         label.classList.add("btn-outline-success");
     } else {
-        label.textContent = "هوية غير موثقة";
+        label.innerHTML = 'هوية غير موثقة';
         label.classList.remove("btn-outline-success");
         label.classList.add("btn-outline-danger");
     }
