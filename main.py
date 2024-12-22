@@ -12,4 +12,4 @@ app.add_middleware(CORSMiddleware,
                    allow_headers=["*"])
 app.include_router(router=router)
 
-app.mount(path=f"/", app=StaticFiles(directory="./views", html=True), name="tasks")
+app.mount(path=f"/", app=StaticFiles(directory="./views", html=True))
