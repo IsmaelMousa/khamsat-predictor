@@ -27,7 +27,7 @@ price estimates based on service characteristics. This ensures transparency, fos
 anxiety for both sellers and clients. The model integrates classical machine learning techniques, employing structured
 methodologies from data collection to deployment.
 
-![Demo](./views/images/preview.png)
+[![Khamsat Predictor Preview](./views/images/preview.png)](./views/images/preview.webm)
 
 ## Objective
 
@@ -49,6 +49,11 @@ The project follows a structured strategy with five key phases:
    Random Forest Classifier) were trained and optimized.
 5. **Deployment**: The trained models were deployed using FastAPI, providing a user-friendly interface for price
    predictions.
+
+> [!NOTE]
+>
+> You can find the exploratory data analysis (EDA), data preprocessing, modeling phases in the [notebooks](notebooks) directory.
+>
 
 ## Modules
 
