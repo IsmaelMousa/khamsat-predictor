@@ -3,14 +3,13 @@
 Utilizing web scraping and machine learning techniques to accurately
 predict <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
 service
-prices. 
+prices.
 
-Read the official paper: [khamsat predictor paper](paper.pdf).
+Read the official paper: [Data-Driven Optimization of Pricing Strategies on Microservice Platforms: Insights From Khamsat](paper.pdf).
 
 > [!IMPORTANT]
 >
-> The data utilized in this project is the property of
-> the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
+> The data utilized in this project is the property of  the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
 > platform, with all associated rights reserved to
 > them. This project, however, is an independent endeavor and solely owned by me, with no affiliation to any institution
 > or organization.
@@ -18,14 +17,7 @@ Read the official paper: [khamsat predictor paper](paper.pdf).
 
 ## Overview
 
-Present the **Khamsat Predictor**, a machine learning model designed to address challenges in the freelance marketplace.
-By analyzing data
-from <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>,
-the largest platform for Arab freelancers, the predictor
-offers accurate
-price estimates based on service characteristics. This ensures transparency, fosters trust, and alleviates price-related
-anxiety for both sellers and clients. The model integrates classical machine learning techniques, employing structured
-methodologies from data collection to deployment.
+Present the **Khamsat Predictor**, a machine learning model aimed at addressing challenges in the freelance marketplace. By analyzing data from <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>, the largest platform for Arab freelancers, the model provides price estimates based on service characteristics. While the current version faces challenges like data limitations and overfitting, it offers a foundation to improve transparency and help alleviate price-related concerns for both sellers and clients. The model employs classical machine learning techniques and follows structured methodologies for data collection, training, and deployment, with plans for future enhancements through better data acquisition and advanced techniques.
 
 https://github.com/user-attachments/assets/9e36ea66-0ea7-42d9-af46-dbe825b250a1
 
@@ -52,7 +44,8 @@ The project follows a structured strategy with five key phases:
 
 > [!NOTE]
 >
-> You can find the exploratory data analysis (EDA), data preprocessing, modeling phases in the [notebooks](notebooks) directory.
+> You can find the exploratory data analysis (EDA), data preprocessing, modeling phases in the [notebooks](notebooks)
+> directory.
 >
 
 ## Modules
@@ -61,6 +54,7 @@ This shows the project's skeleton.
 
 ```zsh
 khamsat-predictor
+ ├── charts
  ├── data
  │   ├── raw
  │   ├── balanced.csv
@@ -158,14 +152,84 @@ This table shows the technologies and tools that are used in Khamsat Predictor.
 |       `CSS`       | Format the appearance of the web interface, including layout, colors, and fonts.                                    | Deployment         |
 |      `HTML`       | Structure the web interface and content for price prediction.                                                       | Deployment         |
 
+## Experiments
+
+n this project, we adopt a multimodal approach, evaluating and optimizing several machine
+learning algorithms through hyperparameter tuning. The experiments carried out aimed to
+evaluate model performance on both the original imbalanced dataset and a balanced version
+created by random oversampling. Both experimental setups were tracked using [MLflow](https://mlflow.org/), ensuring
+reproducibility and optimization of the model workflows.
+
+[Optuna](https://optuna.org) is used for hyperparameter optimization, conducting
+up to 50 trials for each model to maximize the F1-score. Tables 1 and 2 summarize
+the hyperparameters tuned for each model.
+
+**Table 1: Hyperparameters tuned on the original clean imbalanced dataset.**
+
+|  **Hyperparameter**   | **SoftMax Regression** | **SVC**  | **Random Forest Classifier** |
+|:---------------------:|:----------------------:|:--------:|:----------------------------:|
+|   **Class Weight**    |        balanced        | balanced |           balanced           |
+|    **Multi Class**    |      multinomial       |    -     |              -               |
+|      **Solver**       |         lbfgs          |    -     |              -               |
+|      **Kernel**       |           -            |  linear  |              -               |
+|       **Gamma**       |           -            |   0.48   |              -               |
+|         **C**         |          0.53          |   0.79   |              -               |
+|  **Max Iterations**   |          6972          |   8170   |              -               |
+| **Decision Function** |           -            |   ovo    |              -               |
+|    **Estimators**     |           -            |    -     |             395              |
+|       **Depth**       |           -            |    -     |              14              |
+|     **Criterion**     |           -            |    -     |           log loss           |
+
+<br>
+
+**Table 2: Hyperparameters tuned on the balanced dataset using random oversampling**
+
+|  **Hyperparameter**   | **SoftMax Regression** | **SVC**  | **Random Forest Classifier** |
+|:---------------------:|:----------------------:|:--------:|:----------------------------:|
+|   **Class Weight**    |        balanced        | balanced |           balanced           |
+|    **Multi Class**    |      multinomial       |    -     |              -               |
+|      **Solver**       |         lbfgs          |    -     |              -               |
+|      **Kernel**       |           -            |   rbf    |              -               |
+|       **Gamma**       |           -            |   0.33   |              -               |
+|         **C**         |          0.88          |   0.57   |              -               |
+|  **Max Iterations**   |          7356          |   9189   |              -               |
+| **Decision Function** |           -            |   ovo    |              -               |
+|    **Estimators**     |           -            |    -     |             133              |
+|       **Depth**       |           -            |    -     |              22              |
+|     **Criterion**     |           -            |    -     |           log loss           |
+
+## Challenges
+
+1. **Overfitting**: The model exhibited signs of overfitting, where it performed well on the training data but struggled to generalize to unseen data. This was primarily due to the random oversampling technique used to address class imbalance. While oversampling can balance the dataset, it also introduces redundancy and can cause data leakage between the training and unseen data. This redundancy might lead the model to memorize specific patterns from the training set, which hampers its ability to generalize.
+
+
+2. **Small and Imbalanced Data**: A significant limitation was the small size of the dataset, which constrained the model's ability to learn meaningful patterns. Coupled with this, the data imbalance made it harder for the model to learn representations for the underrepresented classes, further compounding the overfitting issue. The imbalance, when combined with the small data size, made it difficult for the model to build a reliable generalization from the training data.
+
+
+3. **Challenges in Data Acquisition**: The ability to gather enough high-quality data is critical. Web scraping has been limited in our case, making it challenging to acquire a sufficient volume of diverse examples. This limitation is expected to persist, and will need to be addressed in the future by either collaborating with Khamsat to obtain more data or exploring data augmentation techniques, including synthetic data generation, to simulate additional varied examples that better represent the target distribution.
+
+
+
+
 ## Results
 
-The project successfully identified key correlations in the dataset, such as the impact of **Service Name**, **Additions
-Price**, and **Owner Level** on the price prediction. After cleaning the data and addressing missing values, several
-models were trained, and the SVC showed the best performance in terms of accuracy and F1 score. The
-model is now capable of providing price predictions based on offer features with high accuracy.
+The performance of the models is assessed using a set of standard evaluation metrics, including Log Loss, Accuracy,
+Precision, Recall, and the F1-score.
 
-The table here presents the results for each model.
+The results for each model, presented in Tables 3 and 4, highlight the trade-offs between these metrics under different
+conditions, offering insight into the strengths and weaknesses of each approach.
+
+**Table 3: Performance metrics on the imbalanced dataset.**
+
+| **Model**                | **Loss** | **Accuracy** | **Precision** | **Recall** | **F1**  |
+|:-------------------------|:--------:|:------------:|:-------------:|:----------:|:-------:|
+| SoftMax Regression       |   1.62   |     40%      |      17%      |    23%     |   17%   |
+| SVC                      |   1.18   |     42%      |      16%      |    18%     |   16%   |
+| Random Forest Classifier |   1.28   |   **56%**    |    **22%**    |  **25%**   | **22%** |
+
+<br>
+
+**Table 4: Performance metrics on the balanced dataset.**
 
 | **Model**                | **Loss** | **Accuracy** | **Precision** | **Recall** | **F1**  |
 |:-------------------------|:--------:|:------------:|:-------------:|:----------:|:-------:|
@@ -219,6 +283,6 @@ uvicorn main:app --host localhost --port 8080
 
 ## Acknowledgments
 
-I'm grateful to [Prof. Adnan Salman](https://scholar.google.com/citations?user=MXOIQ3cAAAAJ&hl=en)
-and [Eng. Samer Huwari](https://www.linkedin.com/in/samerhuwari) for their fruitful
+I'm grateful to [Adnan Salman](https://scholar.google.com/citations?user=MXOIQ3cAAAAJ&hl=en)
+and [Samer Huwari](https://www.linkedin.com/in/samerhuwari) for their fruitful
 comments, corrections and inspiration.
