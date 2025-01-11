@@ -5,7 +5,7 @@ predict <a href="https://khamsat.com" target="_blank"><img src="./views/images/l
 service
 prices.
 
-Read the official paper: [Data-Driven Optimization of Pricing Strategies on Microservice Platforms: Insights From Khamsat](paper.pdf).
+[Data-Driven Optimization of Pricing Strategies on Microservice Platforms: Insights From Khamsat](paper.pdf).
 
 ## Overview
 
@@ -101,6 +101,7 @@ khamsat-predictor
  │   └── style.css     
  ├── .gitignore
  ├── LICENSE.md
+ ├── paper.pdf
  ├── main.py
  ├── README.md
  ├── requirements.txt
