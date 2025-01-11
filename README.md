@@ -9,7 +9,14 @@ prices.
 
 ## Overview
 
-Present the **Khamsat Predictor**, a machine learning model aimed at addressing challenges in the freelance marketplace. By analyzing data from <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>, the largest platform for Arab freelancers, the model provides price estimates based on service characteristics. While the current version faces challenges like data limitations and overfitting, it offers a foundation to improve transparency and help alleviate price-related concerns for both sellers and clients. The model employs classical machine learning techniques and follows structured methodologies for data collection, training, and deployment, with plans for future enhancements through better data acquisition and advanced techniques.
+Present the **Khamsat Predictor**, a machine learning model aimed at addressing challenges in the freelance marketplace.
+By analyzing data
+from <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>,
+the largest platform for Arab freelancers, the model provides price estimates based on service characteristics. While
+the current version faces challenges like data limitations and overfitting, it offers a foundation to improve
+transparency and help alleviate price-related concerns for both sellers and clients. The model employs classical machine
+learning techniques and follows structured methodologies for data collection, training, and deployment, with plans for
+future enhancements through better data acquisition and advanced techniques.
 
 https://github.com/user-attachments/assets/9e36ea66-0ea7-42d9-af46-dbe825b250a1
 
@@ -36,8 +43,7 @@ The project follows a structured strategy with five key phases:
 
 > [!NOTE]
 >
-> You can find the exploratory data analysis (EDA), data preprocessing, modeling phases in the [notebooks](notebooks)
-> directory.
+> You can find the exploratory data analysis (EDA), data preprocessing, modeling phases in the [notebooks](notebooks).
 >
 
 ## Modules
@@ -101,14 +107,17 @@ khamsat-predictor
  │   └── style.css     
  ├── .gitignore
  ├── LICENSE.md
- ├── paper.pdf
  ├── main.py
+ ├── paper.pdf
  ├── README.md
  ├── requirements.txt
  └── requirements-dev.txt
 ```
 
 Here is a summary for the purpose of each major module or component in the project.
+
+<details>
+  <summary>Click to see</summary>
 
 |         Module         | Purpose                                                                                                                                                                                       |
 |:----------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -120,12 +129,34 @@ Here is a summary for the purpose of each major module or component in the proje
 |       `routers`        | Manages API route definitions, linking frontend requests to backend functionalities, including data processing and prediction endpoints.                                                      |
 |        `views`         | Responsible for rendering frontend templates or static files, providing the visual interface for interacting with the application.                                                            |
 |       `main.py`        | Serves as the project's entry point, initializing the application and orchestrating its components.                                                                                           |
+|      `paper.pdf`       | Provides a detailed overview of the project, including its objectives, methodology, experiments, results, and conclusions, serving as the primary documentation.                              |
 |   `requieremnts.txt`   | Lists the dependencies required to run the application, ensuring that all necessary libraries and tools are installed.                                                                        |
 | `requierments-dev.txt` | Specifies additional dependencies for development purposes.                                                                                                                                   |
+|        `charts`        | Contains the images of all charts/plots.                                                                                                                                                      |
+
+</details>
 
 ## Technologies
 
-This table shows the technologies and tools that are used in Khamsat Predictor.
+<div align="center">
+
+<a href="https://selenium-python.readthedocs.io" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png" alt="Selenium" title="Selenium" height="35"></a>
+<a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="35"></a>
+<a href="https://scikit-learn.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png" alt="Scikit-Learn" title="Scikit-Learn" height="35"></a>
+<a href="https://pandas.pydata.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/2560px-Pandas_logo.svg.png" alt="Pandas" title="Pandas" height="35"></a>
+<a href="https://numpy.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1200px-NumPy_logo_2020.svg.png" alt="NumPy" title="NumPy" height="35"></a>
+<a href="https://matplotlib.org" target="_blank"><img src="https://www.jumpingrivers.com/blog/customising-matplotlib/matplot_title_logo.png" alt="Matplotlib" title="Matplotlib" height="35"></a>
+<a href="https://seaborn.pydata.org" target="_blank"><img src="https://seaborn.pydata.org/_images/logo-wide-lightbg.svg" alt="Seaborn" title="Seaborn" height="35"></a>
+<a href="https://mlflow.org" target="_blank"><img src="https://mlflow.org/docs/latest/_static/MLflow-logo-final-black.png" alt="MLflow" title="MLflow" height="35"></a>
+<a href="https://optuna.org" target="_blank"><img src="https://raw.githubusercontent.com/optuna/optuna/master/docs/image/optuna-logo.png" alt="Optuna" title="Optuna" height="35"></a>
+</div>
+
+
+
+Here is a summary for the purpose of each tool used in the project.
+
+<details>
+  <summary>Click to see</summary>
 
 |    Dependency     | Usage                                                                                                               | Phase              |
 |:-----------------:|---------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -140,20 +171,19 @@ This table shows the technologies and tools that are used in Khamsat Predictor.
 | `arabic_reshaper` | Reshaping Arabic text, ensuring that it displays correctly when visualized in plots or graphs.                      | EDA                |
 |   `python-bidi`   | Facilitates bidirectional text rendering, useful for displaying Arabic script.                                      | EDA                |
 |     `fastapi`     | Used to build the interface for price prediction, allowing the model to interact with users in real-time.           | Deployment         |
-|    `Bootstrap`    | Building responsive and visually appealing user interfaces.                                                         | Deployment         |
-|   `JavaScript`    | Creating dynamic, interactive elements in the web interface.                                                        | Deployment         |
-|       `CSS`       | Format the appearance of the web interface, including layout, colors, and fonts.                                    | Deployment         |
-|      `HTML`       | Structure the web interface and content for price prediction.                                                       | Deployment         |
+
+</details>
+
 
 ## Experiments
 
-n this project, we adopt a multimodal approach, evaluating and optimizing several machine
+In this project, we adopt a multimodal approach, evaluating and optimizing several machine
 learning algorithms through hyperparameter tuning. The experiments carried out aimed to
 evaluate model performance on both the original imbalanced dataset and a balanced version
-created by random oversampling. Both experimental setups were tracked using [MLflow](https://mlflow.org/), ensuring
+created by random oversampling. Both experimental setups were tracked using MLflow library, ensuring
 reproducibility and optimization of the model workflows.
 
-[Optuna](https://optuna.org) is used for hyperparameter optimization, conducting
+Optuna library was used for hyperparameter optimization, conducting
 up to 50 trials for each model to maximize the F1-score. Tables 1 and 2 summarize
 the hyperparameters tuned for each model.
 
@@ -193,16 +223,25 @@ the hyperparameters tuned for each model.
 
 ## Challenges
 
-1. **Overfitting**: The model exhibited signs of overfitting, where it performed well on the training data but struggled to generalize to unseen data. This was primarily due to the random oversampling technique used to address class imbalance. While oversampling can balance the dataset, it also introduces redundancy and can cause data leakage between the training and unseen data. This redundancy might lead the model to memorize specific patterns from the training set, which hampers its ability to generalize.
+1. **Overfitting**: The model exhibited signs of overfitting, where it performed well on the training data but struggled
+   to generalize to unseen data. This was primarily due to the random oversampling technique used to address class
+   imbalance. While oversampling can balance the dataset, it also introduces redundancy and can cause data leakage
+   between the training and unseen data. This redundancy might lead the model to memorize specific patterns from the
+   training set, which hampers its ability to generalize.
 
 
-2. **Small and Imbalanced Data**: A significant limitation was the small size of the dataset, which constrained the model's ability to learn meaningful patterns. Coupled with this, the data imbalance made it harder for the model to learn representations for the underrepresented classes, further compounding the overfitting issue. The imbalance, when combined with the small data size, made it difficult for the model to build a reliable generalization from the training data.
+2. **Small and Imbalanced Data**: A significant limitation was the small size of the dataset, which constrained the
+   model's ability to learn meaningful patterns. Coupled with this, the data imbalance made it harder for the model to
+   learn representations for the underrepresented classes, further compounding the overfitting issue. The imbalance,
+   when combined with the small data size, made it difficult for the model to build a reliable generalization from the
+   training data.
 
 
-3. **Challenges in Data Acquisition**: The ability to gather enough high-quality data is critical. Web scraping has been limited in our case, making it challenging to acquire a sufficient volume of diverse examples. This limitation is expected to persist, and will need to be addressed in the future by either collaborating with Khamsat to obtain more data or exploring data augmentation techniques, including synthetic data generation, to simulate additional varied examples that better represent the target distribution.
-
-
-
+3. **Challenges in Data Acquisition**: The ability to gather enough high-quality data is critical. Web scraping has been
+   limited in our case, making it challenging to acquire a sufficient volume of diverse examples. This limitation is
+   expected to persist, and will need to be addressed in the future by either collaborating with Khamsat to obtain more
+   data or exploring data augmentation techniques, including synthetic data generation, to simulate additional varied
+   examples that better represent the target distribution.
 
 ## Results
 
@@ -276,4 +315,7 @@ uvicorn main:app --host localhost --port 8080
 
 ## Ownership
 
-The data utilized in this project is the property of  the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a> platform, with all associated rights reserved to them. This project, however, is an independent endeavor and solely owned by me, with no affiliation to any institution or organization.
+The data utilized in this project is the property of
+the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
+platform, with all associated rights reserved to them. This project, however, is an independent endeavor and solely
+owned by me, with no affiliation to any institution or organization.
