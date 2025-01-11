@@ -7,14 +7,6 @@ prices.
 
 Read the official paper: [Data-Driven Optimization of Pricing Strategies on Microservice Platforms: Insights From Khamsat](paper.pdf).
 
-> [!IMPORTANT]
->
-> The data utilized in this project is the property of  the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>
-> platform, with all associated rights reserved to
-> them. This project, however, is an independent endeavor and solely owned by me, with no affiliation to any institution
-> or organization.
->
-
 ## Overview
 
 Present the **Khamsat Predictor**, a machine learning model aimed at addressing challenges in the freelance marketplace. By analyzing data from <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a>, the largest platform for Arab freelancers, the model provides price estimates based on service characteristics. While the current version faces challenges like data limitations and overfitting, it offers a foundation to improve transparency and help alleviate price-related concerns for both sellers and clients. The model employs classical machine learning techniques and follows structured methodologies for data collection, training, and deployment, with plans for future enhancements through better data acquisition and advanced techniques.
@@ -279,10 +271,8 @@ uvicorn main:app --host localhost --port 8080
 
 7. Navigate to [http://localhost:8080](http://localhost:8080), and start using it.
 
---- 
+---
 
-## Acknowledgments
+## Ownership
 
-I'm grateful to [Adnan Salman](https://scholar.google.com/citations?user=MXOIQ3cAAAAJ&hl=en)
-and [Samer Huwari](https://www.linkedin.com/in/samerhuwari) for their fruitful
-comments, corrections and inspiration.
+The data utilized in this project is the property of  the <a href="https://khamsat.com" target="_blank"><img src="./views/images/logo.png" alt="https://khamsat.com" title="موقع خمسات" height="10"></a> platform, with all associated rights reserved to them. This project, however, is an independent endeavor and solely owned by me, with no affiliation to any institution or organization.
