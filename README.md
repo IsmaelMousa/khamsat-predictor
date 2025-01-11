@@ -138,17 +138,17 @@ Here is a summary for the purpose of each major module or component in the proje
 
 ## Technologies
 
-<div>
+<div align="center">
 
-<a href="https://selenium-python.readthedocs.io" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png" alt="Selenium" title="Selenium" height="35"></a>
-<a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="35"></a>
-<a href="https://scikit-learn.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png" alt="Scikit-Learn" title="Scikit-Learn" height="35"></a>
-<a href="https://pandas.pydata.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/2560px-Pandas_logo.svg.png" alt="Pandas" title="Pandas" height="35"></a>
-<a href="https://numpy.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1200px-NumPy_logo_2020.svg.png" alt="NumPy" title="NumPy" height="35"></a>
-<a href="https://matplotlib.org" target="_blank"><img src="https://www.jumpingrivers.com/blog/customising-matplotlib/matplot_title_logo.png" alt="Matplotlib" title="Matplotlib" height="35"></a>
-<a href="https://seaborn.pydata.org" target="_blank"><img src="https://seaborn.pydata.org/_images/logo-wide-lightbg.svg" alt="Seaborn" title="Seaborn" height="35"></a>
-<a href="https://mlflow.org" target="_blank"><img src="https://mlflow.org/docs/latest/_static/MLflow-logo-final-black.png" alt="MLflow" title="MLflow" height="35"></a>
-<a href="https://optuna.org" target="_blank"><img src="https://raw.githubusercontent.com/optuna/optuna/master/docs/image/optuna-logo.png" alt="Optuna" title="Optuna" height="35"></a>
+<a href="https://selenium-python.readthedocs.io" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png" alt="Selenium" title="Selenium" height="30"></a>
+<a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="30"></a>
+<a href="https://scikit-learn.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png" alt="Scikit-Learn" title="Scikit-Learn" height="30"></a>
+<a href="https://pandas.pydata.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/2560px-Pandas_logo.svg.png" alt="Pandas" title="Pandas" height="30"></a>
+<a href="https://numpy.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1200px-NumPy_logo_2020.svg.png" alt="NumPy" title="NumPy" height="30"></a>
+<a href="https://matplotlib.org" target="_blank"><img src="https://www.jumpingrivers.com/blog/customising-matplotlib/matplot_title_logo.png" alt="Matplotlib" title="Matplotlib" height="30"></a>
+<a href="https://seaborn.pydata.org" target="_blank"><img src="https://seaborn.pydata.org/_images/logo-wide-lightbg.svg" alt="Seaborn" title="Seaborn" height="30"></a>
+<a href="https://mlflow.org" target="_blank"><img src="https://mlflow.org/docs/latest/_static/MLflow-logo-final-black.png" alt="MLflow" title="MLflow" height="30"></a>
+<a href="https://optuna.org" target="_blank"><img src="https://raw.githubusercontent.com/optuna/optuna/master/docs/image/optuna-logo.png" alt="Optuna" title="Optuna" height="30"></a>
 </div>
 
 
