@@ -5,7 +5,7 @@ predict <a href="https://khamsat.com" target="_blank"><img src="./views/images/l
 service
 prices.
 
-[Data-Driven Optimization of Pricing Strategies on Microservice Platforms: Insights From Khamsat](paper.pdf).
+[Data-Driven Optimization of Pricing Strategies on Microservice Platforms: Insights From Khamsat](paper.pdf)
 
 ## Overview
 
@@ -138,7 +138,7 @@ Here is a summary for the purpose of each major module or component in the proje
 
 ## Technologies
 
-<div align="center">
+<div>
 
 <a href="https://selenium-python.readthedocs.io" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png" alt="Selenium" title="Selenium" height="35"></a>
 <a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="35"></a>
