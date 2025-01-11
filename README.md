@@ -138,6 +138,9 @@ Here is a summary for the purpose of each major module or component in the proje
 
 ## Technologies
 
+Technologies and tools used.
+
+
 <div align="center">
 
 <a href="https://selenium-python.readthedocs.io" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png" alt="Selenium" title="Selenium" height="30"></a>
